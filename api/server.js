@@ -9,10 +9,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const mongodb =
+  "mongodb+srv://sp2112:pass@todo.rdkss.mongodb.net/react-todo?retryWrites=true&w=majority";
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/react-todo", {
+  .connect(mongodb, {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("Connected to MongoDB"))
   .catch(console.error);
